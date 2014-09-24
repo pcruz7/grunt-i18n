@@ -156,7 +156,7 @@ An array of objects with the following format:
 ```
 
 ## Contributing
-To contribute, just open an issue in the issue tracker, create a feature branch using the following format <issue-number>-<name>, code and open a Pull Request.
+To contribute, just open an issue in the issue tracker, create a feature branch using the following format `<issue-number>-<name>`, code and open a pull request.
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
