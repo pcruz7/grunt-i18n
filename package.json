@@ -1,7 +1,7 @@
 {
   "name": "grunt-i18n-require",
   "description": "Plugin to convert RequireJS' i18n plugin strings from JSON to .properties files and vice-versa.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/pcruz/grunt-i18n",
   "author": {
     "name": "pcruz",
