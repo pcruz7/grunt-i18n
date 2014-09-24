@@ -27,11 +27,24 @@ In your project's Gruntfile, add a section named `i18n` to the data object passe
 ```js
 grunt.initConfig({
   i18n: {
-    options: {
-      // Task-specific options go here.
+    main: {
+      json: {   // json to properties
+        rootJson: 'base',
+        files: [
+          { src: 'path/to/i18n.js', dest: 'folder/i18n', split: false, isRoot: true }
+          { src: 'path/to/another/i18n.js', folder: 'folder/', split: true }
+        ]
+      }
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      props: {   // properties to json
+        rootProp: 'base',
+        languages: ['en-us', 'en-en'],
+        files: [
+          { src: 'locales/EN/en/', dest: 'public/js/nls/i18n', isRoot: true },  
+          { src: 'locales/EN/us/', dest: 'public/js/nls/pt-pt/i18n' }
+        ]
+      }
     },
   },
 });
@@ -39,9 +52,114 @@ grunt.initConfig({
 
 ### Options
 
-### TODO
+#### json
+The `json` option has the following options:
+
+##### rootJson
+The parser always assumes that the JSON object inside the define is wrapped around a root key. E.g.: for a `rootJson: 'rootKey'`: 
+
+```js
+define({
+  rootKey: {
+    // i18n values
+  }
+});
+
+```
+
+or if the file is the root i18n:
+
+```js
+define({
+  root: {
+    rootKey: {
+      // i18n values
+    }
+  }
+});
+```
+
+##### files
+An array of objects with the following format:
+
+```js
+{
+  src:    'file.js',   // the filename (always expects a file)
+  
+  dest:   'file',      // the name of the file. Use dest if the split option is set to true, 
+                       // otherwise use folder (will always be .properties)
+                       
+  folder: 'folder/',   // the folder where the splitted strings will be put (explained later on). 
+                       // Use dest if split is false (will always be .properties)
+                       
+  split:  true,        // if the i18n file should be splitted into 
+                       // multiple files or just one (default: false)
+                       
+  isRoot: true         // if the i18n file is the root one (default: false)
+}
+```
+
+The parser works as follows:
+ * if the JSON inside the define(); statement is supposed to be split into multiple files, it will take the keys (no recursion) of the rootJson key from the object and create those files. E.g.: taking the following file as an example
+
+```js
+define({
+  rootKey: {
+    key_one: {
+      // i18n values
+    },
+    
+    key_two: {
+      // i18n values
+    }
+  }
+})
+```
+
+The values inside `key_one` will be put in a file named `<folder>/key_one.properties` of a given folder in the following format:
+```
+rootKey.key_one.<another>.<property>=<value>
+```
+
+The same applies for `key_two`.
+ * if the JSON inside the define(); statement is not supposed to be split, then it will create one file (the `dest` option) with each property in the format mentioned earlier.
+
+
+#### props
+The `props` option has the following options:
+
+##### rootProp
+Like the `json` option, the `props` option expects the properties strings to be wrapped around a given key. So the inverse of the previous example should be its main behaviour.
+
+##### languages
+An array containing the supported languages. This will allow to create the root file and automatically add the supported languages, i.e.:
+
+```js
+define({
+  'lang':  true,
+  'lang2': true,
+  root: {
+    rootKey: {
+      // the i18n values
+    }
+  }
+});
+```
+
+##### files
+An array of objects with the following format:
+
+```js
+{ 
+  src: 'locales/EN/en/',      // the source folder
+  dest: 'public/js/nls/i18n', // the destination file (will always be .js)
+  isRoot: true                // if it is the root file
+}
+```
 
 ## Contributing
+To contribute, just open an issue in the issue tracker, create a feature branch using the following format <issue-number>-<name>, code and open a Pull Request.
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
