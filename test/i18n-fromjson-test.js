@@ -32,7 +32,7 @@ exports.i18n = {
     test.expect(1);
 
     var actual = grunt.file.read('tmp/i18n.properties');
-    var expected = grunt.file.read('test/expected/from_json.properties');
+    var expected = grunt.file.read('test/expected/from-json.properties');
     test.equal(actual, expected, 'should be converted to a normalized properties file');
 
     test.done();
