@@ -39,12 +39,15 @@ module.exports = function (grunt) {
   };
 
   function convertPropertyToJson(property) {
-    var split = property.split('=', 2),
-        propertyName  = split[0],
-        propertyValue = split[1],
-        parts         = propertyName.split('.'),
-        length        = parts.length,
-        obj           = {}, i, prop;
+    var split = property.split('='),
+        propertyName = split[0],
+        obj          = {},
+        propertyValue, parts, length, i, prop;
+
+    split.shift();
+    propertyValue = split.join('=');
+    parts         = propertyName.split('.');
+    length        = parts.length;
 
     obj[parts[length - 1]] = propertyValue;
     for (i = length - 2; i >= 0; i--) {

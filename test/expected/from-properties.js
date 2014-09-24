@@ -3,7 +3,7 @@ define({
         "base": {
             "another": {
                 "to": {
-                    "string": "String",
+                    "string": "String <a href='#' class='link'>a link</a>.",
                     "number": "2",
                     "float": "2.1"
                 }
