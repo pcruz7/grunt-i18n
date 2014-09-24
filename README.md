@@ -39,8 +39,8 @@ grunt.initConfig({
         rootProp: 'base',
         languages: ['en-us', 'en-en'],
         files: [
-          { src: 'locales/EN/en/', dest: 'public/js/nls/i18n', isRoot: true },
-          { src: 'locales/EN/us/', dest: 'public/js/nls/pt-pt/i18n' }
+          { src: 'locales/EN/en/**/*.properties', dest: 'public/js/nls/i18n', isRoot: true },
+          { src: 'locales/EN/us/**/*.properties', dest: 'public/js/nls/pt-pt/i18n' }
         ]
       }
     },
@@ -149,9 +149,11 @@ An array of objects with the following format:
 
 ```js
 {
-  src: 'locales/EN/en/',      // the source folder
-  dest: 'public/js/nls/i18n', // the destination file (will always be .js)
-  isRoot: true                // if it is the root file
+  src: 'locales/EN/en/**/*.properties', // the source files
+  dest: 'public/js/nls/i18n',           // the destination file
+                                        // (will always be .js)
+
+  isRoot: true                          // if it is the root file
 }
 ```
 
