@@ -36,6 +36,15 @@ module.exports = function(grunt) {
         }
       },
 
+      root: {
+        json: {
+          rootJson: 'base',
+          files: [
+            { src: 'test/fixtures/i18n-root.js', dest: 'tmp/i18n-root', split: false, isRoot: true }
+          ]
+        }
+      },
+
       prop: {
         props: {
           rootProp: 'base',
@@ -49,7 +58,7 @@ module.exports = function(grunt) {
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js']
+      tests: ['test/*-test.js']
     }
   });
 
@@ -59,9 +68,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  grunt.registerTask('test', ['jshint', 'clean', 'test-json', 'test-prop']);
-  grunt.registerTask('test-prop', ['i18n:prop', 'nodeunit']);
+  grunt.registerTask('test', ['jshint', 'clean', 'test-json', 'test-json-root', 'test-prop']);
   grunt.registerTask('test-json', ['i18n', 'nodeunit']);
+  grunt.registerTask('test-json-root', ['i18n:root', 'nodeunit']);
+  grunt.registerTask('test-prop', ['i18n:prop', 'nodeunit']);
 
   grunt.registerTask('default', ['test']);
 };

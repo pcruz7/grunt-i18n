@@ -17,6 +17,11 @@ module.exports = function(grunt) {
         }
 
         json = getJson(file);
+
+        if (file.isRoot) {
+          json = json.root;
+        }
+
         properties = convertJsonToProperties(jsonRoot, json);
         if (file.split) {
           for (var key in properties) {
