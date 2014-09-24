@@ -98,7 +98,7 @@ An array of objects with the following format:
 ```
 
 The parser works as follows:
- * if the JSON inside the define(); statement is supposed to be split into multiple files, it will take the keys (no recursion) of the rootJson key from the object and create those files. E.g.: taking the following file as an example
+ 1. if the JSON inside the define(); statement is supposed to be split into multiple files, it will take the keys (no recursion) of the rootJson key from the object and create those files. E.g.: taking the following file as an example
 
 ```js
 define({
@@ -120,7 +120,7 @@ rootKey.key_one.<another>.<property>=<value>
 ```
 
 The same applies for `key_two`.
- * if the JSON inside the define(); statement is not supposed to be split, then it will create one file (the `dest` option) with each property in the format mentioned earlier.
+ 2. if the JSON inside the define(); statement is not supposed to be split, then it will create one file (the `dest` option) with each property in the format mentioned earlier.
 
 
 #### props
