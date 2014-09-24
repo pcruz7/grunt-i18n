@@ -21,7 +21,7 @@ module.exports = function (grunt) {
             });
           });
 
-          if (propRoot) {
+          if (file.isRoot) {
             json = { root: json };
             langs.forEach(function (lang) {
               json[lang] = true;
