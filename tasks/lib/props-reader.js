@@ -11,31 +11,26 @@ module.exports = function (grunt) {
           files    = data.props.files;
 
       files.forEach(function (file) {
-        if (!grunt.file.isFile(file.src)) {
-          var convert, content, result, json = {};
-          grunt.file.recurse(file.src, function (abspath, rootdir, subdir, filename) {
-            content = grunt.file.read(abspath).split(/\n|\r/g);
-            content.forEach(function (prop) {
-              if (prop !== '') {
-                convert = convertPropertyToJson(prop);
-                json    = extend(json, convert);
-              }
-            });
+        var convert, content, result, json = {};
+        grunt.file.expand(file.src).forEach(function (file) {
+          content = grunt.file.read(file).split(/\n|\r/g);
+          content.forEach(function (prop) {
+            if (prop !== '') {
+              convert = convertPropertyToJson(prop);
+              json    = extend(json, convert);
+            }
           });
+        });
 
-          if (file.isRoot) {
-            json = { root: json };
-            langs.forEach(function (lang) {
-              json[lang] = true;
-            });
-          }
-
-          result = "define(" + JSON.stringify(json, null, 4) + ");";
-          writeToFile(result, file.dest + ".js");
-        } else {
-          grunt.log.warn("Must be a directory");
-          return false;
+        if (file.isRoot) {
+          json = { root: json };
+          langs.forEach(function (lang) {
+            json[lang] = true;
+          });
         }
+
+        result = "define(" + JSON.stringify(json, null, 4) + ");";
+        writeToFile(result, file.dest + ".js");
       });
     }
   };

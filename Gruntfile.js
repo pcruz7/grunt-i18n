@@ -50,7 +50,7 @@ module.exports = function(grunt) {
           rootProp: 'base',
           languages: ['pt-pt', 'es-es'],
           files: [
-            { src: 'test/fixtures/properties/', dest: 'tmp/i18n', isRoot: true }
+            { src: 'test/fixtures/properties/**/*.properties', dest: 'tmp/i18n', isRoot: true }
           ]
         }
       }
