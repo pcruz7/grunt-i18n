@@ -39,7 +39,7 @@ grunt.initConfig({
         rootProp: 'base',
         languages: ['en-us', 'en-en'],
         files: [
-          { src: 'locales/EN/en/', dest: 'public/js/nls/i18n', isRoot: true },  
+          { src: 'locales/EN/en/', dest: 'public/js/nls/i18n', isRoot: true },
           { src: 'locales/EN/us/', dest: 'public/js/nls/pt-pt/i18n' }
         ]
       }
@@ -54,7 +54,7 @@ grunt.initConfig({
 The `json` option has the following options:
 
 ##### rootJson
-The parser always assumes that the JSON object inside the define is wrapped around a root key. E.g.: for a `rootJson: 'rootKey'`: 
+The parser always assumes that the JSON object inside the define is wrapped around a root key. E.g.: for a `rootJson: 'rootKey'`:
 
 ```js
 define({
@@ -83,16 +83,16 @@ An array of objects with the following format:
 ```js
 {
   src:    'file.js',   // the filename (always expects a file)
-  
-  dest:   'file',      // the name of the file. Use dest if the split option is set to true, 
+
+  dest:   'file',      // the name of the file. Use dest if the split option is set to true,
                        // otherwise use folder (will always be .properties)
-                       
-  folder: 'folder/',   // the folder where the splitted strings will be put (explained later on). 
+
+  folder: 'folder/',   // the folder where the splitted strings will be put (explained later on).
                        // Use dest if split is false (will always be .properties)
-                       
-  split:  true,        // if the i18n file should be splitted into 
+
+  split:  true,        // if the i18n file should be splitted into
                        // multiple files or just one (default: false)
-                       
+
   isRoot: true         // if the i18n file is the root one (default: false)
 }
 ```
@@ -106,7 +106,7 @@ define({
     key_one: {
       // i18n values
     },
-    
+
     key_two: {
       // i18n values
     }
@@ -148,7 +148,7 @@ define({
 An array of objects with the following format:
 
 ```js
-{ 
+{
   src: 'locales/EN/en/',      // the source folder
   dest: 'public/js/nls/i18n', // the destination file (will always be .js)
   isRoot: true                // if it is the root file
@@ -161,4 +161,4 @@ To contribute, just open an issue in the issue tracker, create a feature branch 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.1.0 - 0.1.5: Bug fixes
