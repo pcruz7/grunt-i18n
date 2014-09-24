@@ -16,8 +16,10 @@ module.exports = function (grunt) {
           grunt.file.recurse(file.src, function (abspath, rootdir, subdir, filename) {
             content = grunt.file.read(abspath).split(/\n|\r/g);
             content.forEach(function (prop) {
-              convert = convertPropertyToJson(prop);
-              json    = extend(json, convert);
+              if (prop !== '') {
+                convert = convertPropertyToJson(prop);
+                json    = extend(json, convert);
+              }
             });
           });
 
