@@ -1,4 +1,4 @@
-# grunt-i18n
+# grunt-i18n-require
 
 > Plugin to convert RequireJS' i18n f plugin strings from JSON to .properties files and vice-versa.
 
@@ -8,13 +8,13 @@ This plugin requires Grunt `~0.4.5`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-i18n --save-dev
+npm install grunt-i18n-require --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-i18n');
+grunt.loadNpmTasks('grunt-i18n-require');
 ```
 
 ## The "i18n" task
