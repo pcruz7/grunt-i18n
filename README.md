@@ -22,8 +22,6 @@ grunt.loadNpmTasks('grunt-i18n-require');
 ### Overview
 In your project's Gruntfile, add a section named `i18n` to the data object passed into `grunt.initConfig()`.
 
-### TODO
-
 ```js
 grunt.initConfig({
   i18n: {
